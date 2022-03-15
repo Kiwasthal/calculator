@@ -14,6 +14,14 @@ let operate = (operator,numOne,numTwo) =>
   operator == "+" ? add(numOne,numTwo) : operator == "-" ? subtract(numOne,numTwo) : 
   operator ==  "*" ? multiply(numOne,numTwo) : divide(numOne,numTwo);
 
+// window.addEventListener('click',function(e){
+//   const audio = this.document.querySelector(`audio[data-key="${e.keyCode}"]`)
+//   console.log(audio)
+// })
 
+window.addEventListener('keydown',function(e) {
+  const audios = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+  console.log(audios)
+})
 
 
