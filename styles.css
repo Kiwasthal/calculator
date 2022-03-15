@@ -48,10 +48,12 @@ body {
     display: flex;
     background-color: antiquewhite;
     border: 3px rgb(204, 174, 2) solid;
+    align-items: center;
     justify-content: center;
     width: 300px;
     height: 100px;  
     border-radius: 15px;  
+    font-size: 50px;
 }
 
 .row-one ,.row-two, .row-three , .row-four{
@@ -65,6 +67,9 @@ body {
 }
 
 button{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     border-radius: 50px;
     width: 60px;
     height: 60px;
@@ -74,9 +79,10 @@ button{
                                     #e6e9bf, #d2b5aa, #cbaea3, #d4b5ab,
                                         #e6e9bf, #d2b5aa, #cbaea3, #d4b5ab);
     color: black;
-    font-size: 25px;
-    font-weight: bold;
-    box-shadow: -10px 8px 20px rgba(0,0,0,0.5)                               
+    font-size: 35px;
+    font-weight : bold;
+    box-shadow: -10px 8px 20px rgba(0,0,0,0.5) 
+
 }
 
 .key {

@@ -1,11 +1,10 @@
 //  Create functions for basic math operators
+let display  = "";
+let screen = document.querySelector('.screen');
 
 let add = (numOne,numTwo) => numOne + numTwo;
-
 let subtract = (numOne,numTwo) => numOne - numTwo;
-
 let multiply = (numOne,numTwo) => numOne * numTwo;
-
 let divide = (numOne,numTwo) => numOne / numTwo;
 
 //Create a function that takes two numbers and an operator and calls one of the above functions depending on the operator
@@ -19,6 +18,8 @@ let operate = (operator,numOne,numTwo) =>
 let playSound = (e) => { 
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+  if (display.length < 9 && audio ) display +=e.key
+  screen.textContent = display
   if (!audio) return ;
   audio.currentTime = 0 ;
   audio.play();
@@ -26,7 +27,7 @@ let playSound = (e) => {
 }
 //Removes transition after transition-end
 
-window.addEventListener('keyup', function(e) {
+window.addEventListener('keyup', (e) => {
   let key = document.querySelector(`.key[data-key = "${e.keyCode}"]`);
   if(key == null) return;
   key.classList.remove('pressed');
@@ -34,4 +35,16 @@ window.addEventListener('keyup', function(e) {
 
 window.addEventListener('keydown',playSound);
 
+//Creating sound and animation for clicks 
 
+let buttons = document.querySelectorAll('button')
+console.table(buttons)
+buttons.forEach(button => button.addEventListener('click', (e) => {
+  console.log(e)
+}))
+
+let logText = (e) => {
+  console.log(this.classList.value)
+}
+
+buttons.forEach(button => button.addEventListener('click',logText));
