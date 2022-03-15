@@ -1,31 +1,19 @@
-//Assigning sounds to key presses
+//  Create functions for basic math operators
 
-document.addEventListener('keydown', function(e) {
-    if (e.keyCode == 49 || e.keyCode == 50  ||e.keyCode == 51 ||e.keyCode == 52 ||
-        e.keyCode == 53 || e.keyCode == 54  ||e.keyCode == 55 ||e.keyCode ==  56||
-        e.keyCode == 57 || e.keyCode == 48  ||e.keyCode == 106 || e.keyCode == 107 || 
-        e.keyCode == 49 ||e.keyCode  == 67  ||e.keyCode == 188 || e.keyCode == 109 || e.keyCode == 191 )  {
-      document.getElementById('audio').play();
-    }
-  });
+let add = (numOne,numTwo) => numOne + numTwo;
 
-document.addEventListener('keydown', function(e) {
-    if (e.keyCode == 187 ) {
-        document.getElementById('audioSpace').play();
-    }  
-});
+let subtract = (numOne,numTwo) => numOne - numTwo;
 
-//Assigning sounds to clicks
+let multiply = (numOne,numTwo) => numOne * numTwo;
 
-const btn = document.querySelectorAll('button');
-  for (i = 0 ; i< btn.length ; i++) {
-      if (btn[i].classList.contains('result') == false) {
-      btn[i].addEventListener('click', function(e){
-        document.getElementById('audio').play(); 
-      })
-    }else {
-        btn[i].addEventListener('click',function(e){
-            document.getElementById('audioSpace').play();
-        })
-    }
- }
+let divide = (numOne,numTwo) => numOne / numTwo;
+
+//Create a function that takes two numbers and an operator and calls one of the above functions depending on the operator
+
+let operate = (operator,numOne,numTwo) => 
+  operator == "+" ? add(numOne,numTwo) : operator == "-" ? subtract(numOne,numTwo) : 
+  operator ==  "*" ? multiply(numOne,numTwo) : divide(numOne,numTwo);
+
+
+
+

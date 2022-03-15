@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: 'Lobster', cursive;
 }
 
 body {
@@ -24,11 +25,7 @@ body {
     justify-content:center ;
     align-items: center;
     flex-direction: column;
-    
-    
 }
-
-
 
 .display {
     display: flex;
@@ -43,20 +40,18 @@ body {
     height: 600px;
     flex-wrap: wrap;
     border: 2px solid gold;
-    filter: drop-shadow(0 0 1rem black);
-    
-    
+    filter: drop-shadow(0 0 1rem black);   
+    border-radius: 20px;
 }
 
 .screen {
     display: flex;
     background-color: antiquewhite;
-    border: 2px silver solid;
+    border: 3px rgb(204, 174, 2) solid;
     justify-content: center;
     width: 300px;
     height: 100px;  
-  
-    
+    border-radius: 15px;  
 }
 
 .row-one ,.row-two, .row-three , .row-four{
@@ -68,9 +63,6 @@ body {
 #equal {
     width: 170px;
 }
-
-
-
 
 button{
     border-radius: 50px;
@@ -84,6 +76,5 @@ button{
     color: black;
     font-size: 25px;
     font-weight: bold;
-    box-shadow: -10px 8px 20px rgba(0,0,0,0.5)
-                                
+    box-shadow: -10px 8px 20px rgba(0,0,0,0.5)                               
 }
