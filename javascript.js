@@ -14,14 +14,24 @@ let operate = (operator,numOne,numTwo) =>
   operator == "+" ? add(numOne,numTwo) : operator == "-" ? subtract(numOne,numTwo) : 
   operator ==  "*" ? multiply(numOne,numTwo) : divide(numOne,numTwo);
 
-// window.addEventListener('click',function(e){
-//   const audio = this.document.querySelector(`audio[data-key="${e.keyCode}"]`)
-//   console.log(audio)
-// })
+//Adds sounds and animation to each "keydown"
 
-window.addEventListener('keydown',function(e) {
-  const audios = document.querySelector(`audio[data-key="${e.keyCode}"]`)
-  console.log(audios)
-})
+let playSound = (e) => { 
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+  if (!audio) return ;
+  audio.currentTime = 0 ;
+  audio.play();
+  key.classList.add('pressed');
+}
+//Removes transition after transition-end
+
+window.addEventListener('keyup', function(e) {
+  let key = document.querySelector(`.key[data-key = "${e.keyCode}"]`);
+  if(key == null) return;
+  key.classList.remove('pressed');
+})  
+
+window.addEventListener('keydown',playSound);
 
 

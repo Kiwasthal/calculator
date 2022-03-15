@@ -78,3 +78,13 @@ button{
     font-weight: bold;
     box-shadow: -10px 8px 20px rgba(0,0,0,0.5)                               
 }
+
+.key {
+    transition: all 0.07 ;
+}
+
+.pressed {
+    transform: scale(0.9);
+    border-color: gold; 
+    box-shadow: -3px 8px 20px rgba(0,0,0,0.5)
+}
