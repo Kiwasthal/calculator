@@ -12,13 +12,15 @@ let divide = (numOne,numTwo) => numOne / numTwo;
 
 function createOperation(name){
   const obj = {}
- return obj
+  return obj
 }
 
 //Initialize praxis object to store variables and operator
 
 let praxis = createOperation('praxis');
 praxis.operator = ""
+praxis.comma = true
+
 
 //Create a function that takes two numbers and an operator and calls one of the above functions depending on the operator
 
@@ -87,9 +89,17 @@ let logText = (e) => {
 // Inserts a dot and to create floaters!!Should disable after one click
 
   else if (e.target.textContent === "," ) {
-    display += ".";
-    screen.textContent = display;
-    praxis.numOne = display;
+
+    if (praxis.comma === true){
+      display += ".";
+      screen.textContent = display;
+      if (!praxis.numTwo) {
+        praxis.numOne = display;
+        praxis.comma = false;
+      } else {
+        praxis.numTwo = display;
+        praxis.comma = false;
+    }}
   }
   
 //
@@ -100,44 +110,53 @@ let logText = (e) => {
   || e.target.textContent =="×"|| e.target.textContent =="÷") { 
     if (praxis.status === true) {
       let result = operate(praxis.operator,parseFloat(praxis.numOne),parseFloat(praxis.numTwo));
-      praxis.operator = e.target.textContent
-      praxis.numOne = result
-      screen.textContent = result
-      display = ""
-    }   else if (!praxis.status === true) {
+          praxis.operator = e.target.textContent
+          praxis.numOne = result
+          screen.textContent = result
+          display = "" 
+          praxis.comma = true
+    } else if (!praxis.status === true) {
           praxis.operator = e.target.textContent;
           display = "";
           screen.textContent = display;
           praxis.status = true ; //Praxis.status enables to chain multiple operations without clicking equal , if operator button is clicked once, then status activates
+          praxis.comma = true
     }
+  }    
 // Create variables for num.2 . !! Works if status - not set-
 
-} else if ( display.length < 9 && parseInt(e.target.textContent) >= 0 ){
+  else if ( display.length < 9 && parseInt(e.target.textContent) >= 0 ){
     display += e.target.textContent;
     screen.textContent = display;
     praxis.numTwo = display;
+  }
 
 //Calculates result if "=" is clicked, also prevents larger numbers from floating the screen    
 
-} else if (e.target.textContent == "=") {
+  else if (e.target.textContent == "=") {
     let result = operate(praxis.operator,parseFloat(praxis.numOne),parseFloat(praxis.numTwo));
-    if (toString(result).length > 9) {
-    console.log(result)
-    result = result.toString().slice(0,10)
-    screen.textContent = result
-    praxis.numOne = result
-    display = ''
-    praxis.status = false
+    if (result === Infinity) {
+      screen.textContent = "Nice Try!"
+      return;
     }
-    else {
-    screen.textContent = result
+    else if (!praxis.numTwo){
+      return;
+    }
+    else if (toString(result).length > 9) {
+    result = result.toString().slice(0,10);
+    screen.textContent = result;
     praxis.numOne = result;
-    }
-}
-return praxis;
+    display = '';
+    praxis.status = false;
+    numTwo = "";
+    praxis.comma = true;
+    }    
   }
+return praxis;
+}
 
-  //Find sound depending on key pressed and added animation class 'pressed'
+//Find sound depending on key pressed and added animation class 'pressed'
+
 let findSound = (e) => {
     let audio = document.getElementById('keysound')
     e.target.classList.add('pressed')
