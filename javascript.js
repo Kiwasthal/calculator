@@ -38,13 +38,15 @@ window.addEventListener('keydown',playSound);
 //Creating sound and animation for clicks 
 
 let buttons = document.querySelectorAll('button')
-console.table(buttons)
 buttons.forEach(button => button.addEventListener('click', (e) => {
-  console.log(e)
 }))
 
 let logText = (e) => {
-  console.log(this.classList.value)
+  if (display.length < 9){
+  console.log(display.length)
+  display += e.target.textContent
+  screen.textContent = display
+  }
 }
 
 buttons.forEach(button => button.addEventListener('click',logText));
