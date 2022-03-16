@@ -18,7 +18,7 @@ function createOperation(name){
 //Initialize praxis object to store variables and operator
 
 const praxis = createOperation('praxis');
-praxis.operator = "";
+praxis.operator = ""
 
 //Create a function that takes two numbers and an operator and calls one of the above functions depending on the operator
 
@@ -59,29 +59,36 @@ let buttons = document.querySelectorAll('button')
 //Creating variables for different inputs
 
 let logText = (e) => {
+  
   if (display.length < 9 && parseInt(e.target.textContent) >= 0 && praxis.operator === "" ) {
-    display += e.target.textContent
-    screen.textContent = display
+    display += e.target.textContent;
+    screen.textContent = display;
     praxis.numOne = display;
 } else if( e.target.textContent == "+" || e.target.textContent =="-"
   || e.target.textContent =="×"|| e.target.textContent =="÷") { 
-    praxis.operator = e.target.textContent
-    display = ""
+    praxis.operator = e.target.textContent;
+    display = "";
+    praxis.status = 'active';
     screen.textContent = display
 } else if ( display.length < 9 && parseInt(e.target.textContent) >= 0 ){
-  display += e.target.textContent;
-  screen.textContent = display;
-  praxis.numTwo = display;
+    display += e.target.textContent;
+    screen.textContent = display;
+    praxis.numTwo = display;
 } else if (e.target.textContent == "=") {
-  let result = operate(praxis.operator,parseInt(praxis.numOne),parseInt(praxis.numTwo))
-  screen.textContent = result
-  praxis.numOne = result
+    let result = operate(praxis.operator,parseInt(praxis.numOne),parseInt(praxis.numTwo));
+    if (toString(result).length > 9) {
+    console.log(result)
+    result = result.toString().slice(0,10)
+    screen.textContent = result
+    praxis.numOne = result
+    }
+    else {
+    screen.textContent = result
+    praxis.numOne = result;
+    }
 }
-console.log(praxis)
 return praxis;
   }
-
-console.log(praxis)
 
 let findSound = (e) => {
     let audio = document.getElementById('keysound')
